@@ -31,9 +31,9 @@
   --green: #24513c;
   --green-deep: #1b3f2e;
   --green-wash: #dce6dc;
-  --tint-1: #dfe7dc;
-  --tint-2: #e8eadc;
-  --tint-3: #d6e1d8;
+  --tint-1: #c9d8c6;
+  --tint-2: #d6dcc4;
+  --tint-3: #bfd2c3;
   --serif: "Libre Caslon Display", Georgia, serif;
   --sans: "General Sans", "Helvetica Neue", Arial, sans-serif;
   --mono: "Red Hat Mono", ui-monospace, Menlo, monospace;
@@ -106,7 +106,9 @@ section[id] { scroll-margin-top: 110px; }
 .tint-1 .tile__frame { background: var(--tint-1); }
 .tint-2 .tile__frame { background: var(--tint-2); }
 .tint-3 .tile__frame { background: var(--tint-3); }
-.tile__shot { position: absolute; left: 7%; width: min(98%, 720px); top: 40px; display: block; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 1px 0 rgb(27 26 23 / .06), 0 30px 60px -30px rgb(27 26 23 / .45); transition: transform .7s var(--ease); }
+.tile__shot { position: absolute; left: 7%; width: min(98%, 720px); top: 40px; display: block; padding-top: 30px; border-radius: 12px; overflow: hidden; background: #faf9f6; box-shadow: 0 0 0 1px rgb(27 26 23 / .10), 0 1px 0 rgb(27 26 23 / .06), 0 30px 60px -30px rgb(27 26 23 / .5); transition: transform .7s var(--ease); }
+.tile__shot::before { content: ""; position: absolute; inset: 0 0 auto; height: 30px; border-bottom: 1px solid rgb(27 26 23 / .08); background: radial-gradient(circle at 16px 15px, #cfcac0 4px, transparent 4.5px), radial-gradient(circle at 30px 15px, #cfcac0 4px, transparent 4.5px), radial-gradient(circle at 44px 15px, #cfcac0 4px, transparent 4.5px); }
+.tile__shot img { display: block; }
 @media (hover: hover) { .tile:hover .tile__shot { transform: translateY(-8px); } }
 @media (prefers-reduced-motion: reduce) { .tile__shot { transition: none; } .tile:hover .tile__shot { transform: none; } }
 .tile__cap { display: grid; gap: 4px; margin-top: 18px; }
