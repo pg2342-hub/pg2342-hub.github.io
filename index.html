@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pranav Gudise: evals and go-live checks for AI agents</title>
-<meta name="description" content="Nineteen small working builds for taking AI agents live with customers, most with a demo page that needs no install.">
+<meta name="description" content="Small working builds for taking AI agents live with customers, most with a demo page that needs no install.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pranav Gudise: evals and go-live checks for AI agents">
-<meta property="og:description" content="Nineteen small working builds for taking AI agents live with customers.">
+<meta property="og:description" content="Small working builds for taking AI agents live with customers.">
 <meta property="og:image" content="https://pg2342-hub.github.io/share.jpg">
 <meta property="og:url" content="https://pg2342-hub.github.io/">
 <meta name="twitter:card" content="summary_large_image">
@@ -136,6 +136,18 @@ section[id] { scroll-margin-top: 110px; }
 .more { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; }
 .more a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); text-decoration: none; min-height: 44px; }
 .more b { font-weight: 500; }
+.more__group + .more__group { margin-top: 56px; }
+.more__label { font-family: var(--mono); font-weight: 400; font-size: 13px; letter-spacing: .02em; color: var(--ink-2); margin: 0; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.more__all summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 8px; font-weight: 500; color: var(--green); }
+.more__all summary::-webkit-details-marker { display: none; }
+.more__all summary::after { content: ""; width: 7px; height: 7px; border-right: 1.35px solid currentColor; border-bottom: 1.35px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform .3s var(--ease); }
+.more__all[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.more__all[open] summary { order: 2; }
+.more__all { display: flex; flex-direction: column; }
+.more__close, .more__all[open] .more__open { display: none; }
+.more__all[open] .more__close { display: inline; }
+@media (hover: hover) { .more__all summary:hover { text-decoration: underline; text-underline-offset: 4px; } }
+.more__all summary:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; border-radius: 4px; }
 .more em { grid-column: 1; font-style: normal; font-size: 15px; color: var(--ink-2); text-wrap: pretty; }
 .more .mono { grid-column: 2; grid-row: 1; align-self: center; color: var(--ink-2); }
 @media (hover: hover) { .more a:hover b { text-decoration: underline; text-decoration-color: var(--green); text-underline-offset: 4px; } }
@@ -202,29 +214,29 @@ section[id] { scroll-margin-top: 110px; }
         <p>Each one is a small, working answer to one deployment problem. All use synthetic or public data.</p>
       </div>
       <div class="tiles">
-        <a class="tile tile--n tint-1" href="https://pg2342-hub.github.io/booking-eval-harness/">
+        <a class="tile tile--w tint-1" href="https://pg2342-hub.github.io/golive-gate/">
+          <span class="tile__frame"><span class="tile__shot"><img src="work/golive-gate.jpg" width="720" height="640" alt="Refund agent go-live gate: NO-GO. An agent that refunds everything passes the routine cases and fails all four risky ones, in every run." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>golive-gate</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>The pattern behind every build here as one open-source Python package, CLI and GitHub Action: eval cases, judge checks, and a go-live gate that answers go, partial or no-go.</span></span>
+        </a>
+        <a class="tile tile--n tint-2" href="https://pg2342-hub.github.io/booking-eval-harness/">
           <span class="tile__frame"><span class="tile__shot"><img src="work/booking-eval-harness.jpg" width="720" height="490" alt="Booking eval results: the reference agent passes 25 of 25 cases; the naive agent passes 5 of 25 and fails the gate." loading="lazy"></span></span>
           <span class="tile__cap"><span class="tile__row"><b>Booking eval harness</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>A 25-case eval and go-live gate for an agent that books field-service jobs.</span></span>
         </a>
-        <a class="tile tile--w tint-2" href="https://pg2342-hub.github.io/golive-readiness-check/">
-          <span class="tile__frame"><span class="tile__shot"><img src="work/golive-readiness-check.jpg" width="720" height="640" alt="Go-live readiness board: eight hospital units, six no-go, one go with fixes, one go." loading="lazy"></span></span>
-          <span class="tile__cap"><span class="tile__row"><b>Go-live readiness check</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Unit-by-unit go or no-go for a hospital staffing rollout, with fixes grouped by owning team.</span></span>
-        </a>
-        <a class="tile tile--w tint-3" href="https://pg2342-hub.github.io/ticket-routing-eval/">
-          <span class="tile__frame"><span class="tile__shot"><img src="work/ticket-routing-eval.jpg" width="720" height="456" alt="Ticket routing chart: as the confidence threshold rises, the share routed automatically falls, accuracy rises, and the cost per 1,000 tickets dips then climbs." loading="lazy"></span></span>
-          <span class="tile__cap"><span class="tile__row"><b>Ticket routing eval</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Picks the confidence bar for auto-routing support tickets, with the cost per 1,000 tickets.</span></span>
-        </a>
-        <a class="tile tile--n tint-1" href="https://pg2342-hub.github.io/contract-memory-harness/">
+        <a class="tile tile--n tint-3" href="https://pg2342-hub.github.io/contract-memory-harness/">
           <span class="tile__frame"><span class="tile__shot"><img style="max-width:480px" src="work/contract-memory-harness.jpg" width="480" height="640" alt="Contract memory results: long context and the precomputed memory both answer 25 of 25, the memory with 7,073 context tokens a question against 69,221." loading="lazy"></span></span>
           <span class="tile__cap"><span class="tile__row"><b>Contract memory harness</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Four ways to give an agent memory over a contract bank, and what breaks after an amendment.</span></span>
         </a>
-        <a class="tile tile--n tint-2" href="https://pg2342-hub.github.io/capital-account-tieout/">
+        <a class="tile tile--w tint-1" href="https://pg2342-hub.github.io/golive-readiness-check/">
+          <span class="tile__frame"><span class="tile__shot"><img src="work/golive-readiness-check.jpg" width="720" height="640" alt="Go-live readiness board: eight hospital units, six no-go, one go with fixes, one go." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>Go-live readiness check</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Unit-by-unit go or no-go for a hospital staffing rollout, with fixes grouped by owning team.</span></span>
+        </a>
+        <a class="tile tile--w tint-2" href="https://pg2342-hub.github.io/ticket-routing-eval/">
+          <span class="tile__frame"><span class="tile__shot"><img src="work/ticket-routing-eval.jpg" width="720" height="456" alt="Ticket routing chart: as the confidence threshold rises, the share routed automatically falls, accuracy rises, and the cost per 1,000 tickets dips then climbs." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>Ticket routing eval</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Picks the confidence bar for auto-routing support tickets, with the cost per 1,000 tickets.</span></span>
+        </a>
+        <a class="tile tile--n tint-3" href="https://pg2342-hub.github.io/capital-account-tieout/">
           <span class="tile__frame"><span class="tile__shot"><img style="max-width:520px" src="work/capital-account-tieout.jpg" width="520" height="640" alt="Tie-out report: LP accounts that tie and the five that break, each with its difference." loading="lazy"></span></span>
           <span class="tile__cap"><span class="tile__row"><b>Capital account tie-out</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Ties every LP capital account before a fund admin switch and names the likely cause of each break.</span></span>
-        </a>
-        <a class="tile tile--w tint-3" href="https://pg2342-hub.github.io/ap-autoforward-gate/">
-          <span class="tile__frame"><span class="tile__shot"><img src="work/ap-autoforward-gate.jpg" width="720" height="640" alt="Invoice routing: 57 of 110 invoices auto-forward; 53 need accounts payable first." loading="lazy"></span></span>
-          <span class="tile__cap"><span class="tile__row"><b>AP auto-forward gate</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Decides which jobs have earned AI invoice auto-forwarding, and which invoices AP still clears.</span></span>
         </a>
       </div>
     </div>
@@ -249,21 +261,52 @@ section[id] { scroll-margin-top: 110px; }
   <section class="section" id="more" aria-labelledby="more-h">
     <div class="wrap">
       <div class="section__top"><h2 class="label" id="more-h">More builds</h2></div>
-      <ul class="more">
-          <li><a href="https://pg2342-hub.github.io/appointment-agent-eval/"><b>Appointment agent eval</b><em>Switch off any check and see which cases catch it</em><span class="mono">Demo</span></a></li>
-          <li><a href="https://pg2342-hub.github.io/voice-agent-bakeoff/"><b>Voice agent bake-off</b><em>Moves a voice screener to a new model: replay, 10%, then 50%</em><span class="mono">Demo</span></a></li>
-          <li><a href="https://github.com/pg2342-hub/sim-texas-file-prereview"><b>Home sale file pre-review</b><em>Pre-reviews home sale files for compliance, with a 25-case eval</em><span class="mono">Code</span></a></li>
-          <li><a href="https://github.com/pg2342-hub/othello-moment-test"><b>Sales coach moment test</b><em>25 moments: does a live-call coach suggest the right next step?</em><span class="mono">Code</span></a></li>
-          <li><a href="https://pg2342-hub.github.io/agent-coldstart-study/"><b>Agent cold-start study</b><em>Can a fresh coding agent set up an email inbox on its own? 8 runs</em><span class="mono">Demo</span></a></li>
-          <li><a href="https://pg2342-hub.github.io/prompt-to-quote/"><b>Prompt to quote</b><em>A rep's plain-English deal becomes a priced quote with its approvals</em><span class="mono">Demo</span></a></li>
-          <li><a href="https://pg2342-hub.github.io/imessage-reorder-agent/"><b>Text reorder agent</b><em>Text “the usual,” confirm, pay; anything else goes to a person</em><span class="mono">Demo</span></a></li>
-          <li><a href="https://github.com/pg2342-hub/intake-to-po-agent"><b>Intake to PO agent</b><em>A plain-language purchase request taken to a PO decision</em><span class="mono">Code</span></a></li>
-          <li><a href="https://pg2342-hub.github.io/carrier-sourcing-scorecard/"><b>Carrier sourcing scorecard</b><em>Scores a sourcing agent against what reps really booked</em><span class="mono">Demo</span></a></li>
-          <li><a href="https://github.com/pg2342-hub/carrier-onboarding-checks"><b>Carrier onboarding checks</b><em>Checks carriers against public FMCSA data before entry</em><span class="mono">Code</span></a></li>
-          <li><a href="https://pg2342-hub.github.io/partner-deliverable-qa/"><b>Partner deliverable QA</b><em>Holds a partner's discovery work to standard first</em><span class="mono">Demo</span></a></li>
-          <li><a href="https://pg2342-hub.github.io/contract-obligation-tracker/"><b>Contract obligation tracker</b><em>Pulls notice dates; a person verifies each field</em><span class="mono">Demo</span></a></li>
-          <li><a href="https://pg2342-hub.github.io/odyssey-doctor/"><b>API integration checker</b><em>Finds common integration gaps from the command line</em><span class="mono">Demo</span></a></li>
-      </ul>
+      <div class="more__group">
+        <h3 class="more__label mono" id="g1">Evals and go-live gates for agents</h3>
+        <ul class="more" aria-labelledby="g1">
+          <li data-repo="frontdesk-call-gate"><a href="https://pg2342-hub.github.io/frontdesk-call-gate/"><b>Front desk call gate</b><em>30 guest calls graded by rules and a Claude judge, go or no-go in CI</em><span class="mono">Demo</span></a></li>
+          <li data-repo="appointment-agent-eval"><a href="https://pg2342-hub.github.io/appointment-agent-eval/"><b>Appointment agent eval</b><em>Switch off any check and see which cases catch it</em><span class="mono">Demo</span></a></li>
+          <li data-repo="voice-agent-bakeoff"><a href="https://pg2342-hub.github.io/voice-agent-bakeoff/"><b>Voice agent bake-off</b><em>Moves a voice screener to a new model: replay, 10%, then 50%</em><span class="mono">Demo</span></a></li>
+          <li data-repo="sim-texas-file-prereview"><a href="https://github.com/pg2342-hub/sim-texas-file-prereview"><b>Home sale file pre-review</b><em>Pre-reviews home sale files for compliance, with a 25-case eval</em><span class="mono">Code</span></a></li>
+          <li data-repo="othello-moment-test"><a href="https://github.com/pg2342-hub/othello-moment-test"><b>Sales coach moment test</b><em>25 moments: does a live-call coach suggest the right next step?</em><span class="mono">Code</span></a></li>
+        </ul>
+      </div>
+      <div class="more__group">
+        <h3 class="more__label mono" id="g2">Monitoring live data</h3>
+        <ul class="more" aria-labelledby="g2">
+          <li data-repo="complaint-signal-detector"><a href="https://pg2342-hub.github.io/complaint-signal-detector/"><b>Complaint signal detector</b><em>Flags complaint types rising in public FDA device reports, backtested on recalls</em><span class="mono">Demo</span></a></li>
+        </ul>
+      </div>
+      <div class="more__group">
+        <h3 class="more__label mono" id="g3">Agents and agent studies</h3>
+        <ul class="more" aria-labelledby="g3">
+          <li data-repo="agent-coldstart-study"><a href="https://pg2342-hub.github.io/agent-coldstart-study/"><b>Agent cold-start study</b><em>Can a fresh coding agent set up an email inbox on its own? 8 runs</em><span class="mono">Demo</span></a></li>
+          <li data-repo="prompt-to-quote"><a href="https://pg2342-hub.github.io/prompt-to-quote/"><b>Prompt to quote</b><em>A rep's plain-English deal becomes a priced quote with its approvals</em><span class="mono">Demo</span></a></li>
+          <li data-repo="imessage-reorder-agent"><a href="https://pg2342-hub.github.io/imessage-reorder-agent/"><b>Text reorder agent</b><em>Text “the usual,” confirm, pay; anything else goes to a person</em><span class="mono">Demo</span></a></li>
+          <li data-repo="intake-to-po-agent"><a href="https://github.com/pg2342-hub/intake-to-po-agent"><b>Intake to PO agent</b><em>A plain-language purchase request taken to a PO decision</em><span class="mono">Code</span></a></li>
+        </ul>
+      </div>
+      <div class="more__group">
+        <h3 class="more__label mono" id="g4">Rollout and data-readiness checks</h3>
+        <ul class="more" aria-labelledby="g4">
+          <li data-repo="robot-cabling-gate"><a href="https://pg2342-hub.github.io/robot-cabling-gate/"><b>Robot cabling gate</b><em>Decides when a cabling robot can work without a tech watching</em><span class="mono">Demo</span></a></li>
+          <li data-repo="migration-cutover-gate"><a href="https://github.com/pg2342-hub/migration-cutover-gate"><b>Migration cutover gate</b><em>Nothing loads until counts, balances and trust totals tie</em><span class="mono">Code</span></a></li>
+          <li data-repo="margin-bridge-tieout"><a href="https://pg2342-hub.github.io/margin-bridge-tieout/"><b>Margin bridge tie-out</b><em>Rebuilds a quarter's gross-profit bridge and finds the hidden driver</em><span class="mono">Demo</span></a></li>
+          <li data-repo="sales-tax-return-checks"><a href="https://pg2342-hub.github.io/sales-tax-return-checks/"><b>Sales tax return checks</b><em>Recomputes each return and blocks or flags it before filing</em><span class="mono">Demo</span></a></li>
+        </ul>
+        <details class="more__all">
+          <summary><span class="more__open">Show 7 more</span><span class="more__close">Show fewer</span></summary>
+          <ul class="more" aria-labelledby="g4">
+            <li data-repo="ap-autoforward-gate"><a href="https://pg2342-hub.github.io/ap-autoforward-gate/"><b>AP auto-forward gate</b><em>Decides which jobs have earned AI invoice auto-forwarding</em><span class="mono">Demo</span></a></li>
+            <li data-repo="interview-stall-monitor"><a href="https://pg2342-hub.github.io/interview-stall-monitor/"><b>Interview stall monitor</b><em>Flags stalled scheduling threads and unused seats after a rollout</em><span class="mono">Demo</span></a></li>
+            <li data-repo="carrier-sourcing-scorecard"><a href="https://pg2342-hub.github.io/carrier-sourcing-scorecard/"><b>Carrier sourcing scorecard</b><em>Scores a sourcing agent against what reps really booked</em><span class="mono">Demo</span></a></li>
+            <li data-repo="carrier-onboarding-checks"><a href="https://github.com/pg2342-hub/carrier-onboarding-checks"><b>Carrier onboarding checks</b><em>Checks carriers against public FMCSA data before entry</em><span class="mono">Code</span></a></li>
+            <li data-repo="partner-deliverable-qa"><a href="https://pg2342-hub.github.io/partner-deliverable-qa/"><b>Partner deliverable QA</b><em>Holds a partner's discovery work to standard first</em><span class="mono">Demo</span></a></li>
+            <li data-repo="contract-obligation-tracker"><a href="https://pg2342-hub.github.io/contract-obligation-tracker/"><b>Contract obligation tracker</b><em>Pulls notice dates; a person verifies each field</em><span class="mono">Demo</span></a></li>
+            <li data-repo="odyssey-doctor"><a href="https://pg2342-hub.github.io/odyssey-doctor/"><b>API integration checker</b><em>Finds common integration gaps from the command line</em><span class="mono">Demo</span></a></li>
+          </ul>
+        </details>
+      </div>
     </div>
   </section>
 
