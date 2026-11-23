@@ -76,20 +76,13 @@ tbody tr:hover td { background: rgb(27 26 23 / .025); }
 caption { text-align: left; font-size: 14px; padding-bottom: 8px; }
 
 /* verdicts: GO is the one evergreen moment; NO-GO is ink; PARTIAL is a dashed outline */
-.verdict, .badge, .decision { display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 0 12px; border-radius: 999px; font: 500 13px/1 var(--mono); letter-spacing: .04em; white-space: nowrap; vertical-align: middle; border: 1px solid var(--ink); color: var(--ink); background: transparent; }
-.verdict.go, .badge.go, .decision.go, .is-go { background: var(--green-wash); border-color: var(--green-wash); color: var(--green); }
-.verdict.nogo, .verdict.no-go, .badge.nogo, .badge.no-go, .decision.no-go, .is-nogo { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.verdict.partial, .badge.partial, .decision.partial, .is-partial { border-style: dashed; }
-.pass, .ok { color: var(--green); }
-.fail, .bad { color: var(--ink); font-weight: 500; }
-.na { color: var(--ink-2); }
+.badge, .decision, span.verdict { display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 0 12px; border-radius: 999px; font: 500 13px/1 var(--mono); letter-spacing: .04em; white-space: nowrap; vertical-align: middle; border: 1px solid var(--ink); color: var(--ink); background: transparent; }
+.badge.go, .decision.go, span.verdict.go, .is-go { background: var(--green-wash); border-color: var(--green-wash); color: var(--green); }
+.badge.nogo, .badge.no-go, .decision.no-go, span.verdict.nogo, span.verdict.no-go, .is-nogo { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.badge.partial, .decision.partial, span.verdict.partial, .is-partial { border-style: dashed; }
 
-/* panels and stat tiles: flat paper, hairline outline; only screenshots float */
+/* panels: flat paper, hairline outline; only screenshots float */
 .panel, .card { border: 1px solid var(--rule); border-radius: 16px; padding: 20px 22px; background: transparent; margin: 0 0 16px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.stat { border: 1px solid var(--rule); border-radius: 16px; padding: 18px 20px; }
-.stat .k, .stat dt { font: 400 12.5px/1.4 var(--mono); color: var(--ink-2); letter-spacing: .02em; }
-.stat .v, .stat dd { font: 400 34px/1.1 var(--serif); margin: 6px 0 0; }
 .frame { border-radius: 24px; padding: 28px; background: var(--tint-1); overflow: hidden; }
 .frame > img, .frame > svg, .frame > canvas, .shot { display: block; background: #fff; border-radius: 12px; box-shadow: 0 1px 0 rgb(27 26 23 / .06), 0 30px 60px -30px rgb(27 26 23 / .45); }
 
