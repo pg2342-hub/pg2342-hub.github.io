@@ -24,7 +24,6 @@
 <style>
 :root {
   --paper: #f4f2ec;
-  --sheet: #fcfbf7;
   --ink: #1b1a17;
   --ink-2: #57544c;
   --rule: rgb(27 26 23 / .14);
@@ -79,10 +78,6 @@ section[id] { scroll-margin-top: 110px; }
 .pill--line { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
 .pill--line:hover { background: transparent; border-color: var(--ink); }
 
-/* sprig line art (logo and section mark) */
-.sprig path { fill: none; stroke: var(--green); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.sprig__leaf > path:first-child { fill: var(--green-wash); }
-.sprig__vein { opacity: .6; }
 
 /* hero: one sentence, left-aligned */
 .hero { padding: 200px 0 72px; }
@@ -112,6 +107,7 @@ section[id] { scroll-margin-top: 110px; }
 .tint-3 .tile__frame { background: var(--tint-3); }
 .tile__shot { position: absolute; left: 7%; width: min(98%, 720px); top: 40px; display: block; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 1px 0 rgb(27 26 23 / .06), 0 30px 60px -30px rgb(27 26 23 / .45); transition: transform .7s var(--ease); }
 @media (hover: hover) { .tile:hover .tile__shot { transform: translateY(-8px); } }
+@media (prefers-reduced-motion: reduce) { .tile__shot { transition: none; } .tile:hover .tile__shot { transform: none; } }
 .tile__cap { display: grid; gap: 4px; margin-top: 18px; }
 .tile__row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
 .tag { display: inline-flex; align-items: center; gap: 4px; color: var(--green); white-space: nowrap; }
