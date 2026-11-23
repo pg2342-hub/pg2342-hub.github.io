@@ -13,7 +13,7 @@
 <link rel="canonical" href="https://pranavgudise.dev/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#f4f2ec">
+<meta name="theme-color" content="#ffffff">
 <link rel="preload" href="fonts/libre-caslon-display-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
@@ -24,7 +24,9 @@
 </style>
 <style>
 :root {
-  --paper: #f4f2ec;
+  --paper: #ffffff;
+  --grid: rgb(0 0 0 / .045);
+  --railx: calc((100% - min(1248px, calc(100% - 64px))) / 2 - 24px);
   --ink: #1b1a17;
   --ink-2: #57544c;
   --rule: rgb(27 26 23 / .14);
@@ -44,6 +46,13 @@
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--sans); text-rendering: optimizeLegibility; }
+/* page frame: a faint grid behind the hero and in the margins, rails at the content edges, white section panels */
+body { background-image: linear-gradient(var(--rule), var(--rule)), linear-gradient(var(--rule), var(--rule)), linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 1px 100%, 1px 100%, 16px 16px, 16px 16px; background-repeat: no-repeat, no-repeat, repeat, repeat; background-position: var(--railx) 0, calc(100% - var(--railx)) 0, center top, center top; }
+main > section:not(.hero) { background: linear-gradient(var(--paper), var(--paper)) center top / calc(100% - 2 * var(--railx)) 100% no-repeat; }
+main > section + section { position: relative; border-top: 1px solid var(--rule); }
+main > section + section::before, main > section + section::after { content: ""; position: absolute; top: -5px; width: 9px; height: 9px; border: 1px solid var(--rule); background: var(--paper); }
+main > section + section::before { left: calc(var(--railx) - 4px); }
+main > section + section::after { right: calc(var(--railx) - 4px); }
 ::selection { background: var(--green-wash); color: var(--ink); }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 6px; }
@@ -75,7 +84,7 @@ section[id] { scroll-margin-top: 110px; }
 /* floating header: a mark and one pill */
 .top { position: fixed; inset: 0 0 auto 0; z-index: 20; pointer-events: none; }
 /* a soft blur band under the header, so text scrolling beneath it stays out of the way */
-.top::before { content: ""; position: absolute; inset: 0 0 -12px 0; z-index: -1; background: linear-gradient(rgb(244 242 236 / .6), rgb(244 242 236 / .32) 60%, rgb(244 242 236 / 0)); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); -webkit-mask-image: linear-gradient(#000 55%, transparent); mask-image: linear-gradient(#000 55%, transparent); }
+.top::before { content: ""; position: absolute; inset: 0 0 -12px 0; z-index: -1; background: linear-gradient(rgb(255 255 255 / .6), rgb(255 255 255 / .32) 60%, rgb(255 255 255 / 0)); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); -webkit-mask-image: linear-gradient(#000 55%, transparent); mask-image: linear-gradient(#000 55%, transparent); }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; padding: 28px 0; }
 .top a { pointer-events: auto; }
 .brand { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
@@ -122,7 +131,7 @@ section[id] { scroll-margin-top: 110px; }
 .tint-1 .tile__frame { background: var(--tint-1); }
 .tint-2 .tile__frame { background: var(--tint-2); }
 .tint-3 .tile__frame { background: var(--tint-3); }
-.tile__shot { position: absolute; left: 7%; width: min(98%, 720px); top: 40px; display: block; padding-top: 30px; border-radius: 12px; overflow: hidden; background: #faf9f6; box-shadow: 0 0 0 1px rgb(27 26 23 / .10), 0 1px 0 rgb(27 26 23 / .06), 0 30px 60px -30px rgb(27 26 23 / .5); transition: transform .7s var(--ease); }
+.tile__shot { position: absolute; left: 7%; width: min(98%, 720px); top: 40px; display: block; padding-top: 30px; border-radius: 12px; overflow: hidden; background: #fafafa; box-shadow: 0 0 0 1px rgb(27 26 23 / .10), 0 1px 0 rgb(27 26 23 / .06), 0 30px 60px -30px rgb(27 26 23 / .5); transition: transform .7s var(--ease); }
 .tile__shot::before { content: ""; position: absolute; inset: 0 0 auto; height: 30px; border-bottom: 1px solid rgb(27 26 23 / .08); background: radial-gradient(circle at 16px 15px, #cfcac0 4px, transparent 4.5px), radial-gradient(circle at 30px 15px, #cfcac0 4px, transparent 4.5px), radial-gradient(circle at 44px 15px, #cfcac0 4px, transparent 4.5px); }
 .tile__shot img { display: block; }
 @media (hover: hover) { .tile:hover .tile__shot { transform: translateY(-8px); } }
