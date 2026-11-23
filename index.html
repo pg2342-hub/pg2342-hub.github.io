@@ -78,9 +78,9 @@ section[id] { scroll-margin-top: 110px; }
 .craft__ico .f { fill: var(--green-wash); }
 .craft__grid h3 { font-size: clamp(28px, 2.6vw, 36px); line-height: 1.1; }
 .craft__grid p { color: var(--ink-2); max-width: 32em; text-wrap: pretty; }
-.craft__grid a { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; margin-top: auto; }
+.craft__grid a { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-top: auto; color: var(--green); text-decoration: none; }
 .craft__grid a svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.4; }
-.craft__grid li > p { margin-bottom: 16px; }
+.craft__grid a:hover span { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 760px) { .craft__grid { grid-template-columns: minmax(0, 1fr); } .craft__grid li, .craft__grid li:nth-child(even) { padding: 32px 24px 28px; border-left: 0; border-bottom: 1px solid var(--rule); } .craft__grid li:last-child { border-bottom: 0; } .craft__ico { margin-bottom: 20px; } }
 
 /* floating header: a mark and one pill */
@@ -299,25 +299,25 @@ section[id] { scroll-margin-top: 110px; }
           <svg class="craft__ico" viewBox="0 0 48 48" aria-hidden="true"><rect class="f" x="9" y="6" width="30" height="36" rx="4"/><path d="M15 16.5l2.5 2.5 4.5-5M26 16h7M15 26.5l2.5 2.5 4.5-5M26 26h7M15 35h4M26 35h7"/></svg>
           <h3>Evals</h3>
           <p>Test cases written from how the customer will really use the agent, graded by plain rules and a judge, and run more than once so a lucky pass does not count.</p>
-          <a class="pill pill--line" href="builds/evals/">See all 7 evals<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7M6.5 3l3 3-3 3"/></svg></a>
+          <a class="mono" href="builds/evals/"><span>See all 7 evals</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7M6.5 3l3 3-3 3"/></svg></a>
         </li>
         <li>
           <svg class="craft__ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 42V12M40 42V12"/><path class="f" d="M8 16h32v8H8z"/><path d="M14 16l6 8M22 16l6 8M30 16l6 8"/><path d="M4 42h40"/></svg>
           <h3>Go-live gates</h3>
           <p>A bar for go, partial, or no-go that everyone agrees on before launch, so the rollout call is a quick check.</p>
-          <a class="pill pill--line" href="builds/go-live-gates/">See all 3 go-live gates<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7M6.5 3l3 3-3 3"/></svg></a>
+          <a class="mono" href="builds/go-live-gates/"><span>See all 3 go-live gates</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7M6.5 3l3 3-3 3"/></svg></a>
         </li>
         <li>
           <svg class="craft__ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="10" height="10" rx="2"/><rect x="19" y="6" width="10" height="10" rx="2"/><rect class="f" x="32" y="6" width="10" height="10" rx="2"/><rect x="6" y="19" width="10" height="10" rx="2"/><rect class="f" x="19" y="19" width="10" height="10" rx="2"/><rect x="32" y="19" width="10" height="10" rx="2"/><path d="M11 36v6M24 36v6M37 36v6M11 39h26"/></svg>
           <h3>Rollout readiness</h3>
           <p>Before launch, I check the customer&rsquo;s data and setup unit by unit, then send each fix to the team that owns it.</p>
-          <a class="pill pill--line" href="builds/rollout-readiness/">See all 13 rollout checks<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7M6.5 3l3 3-3 3"/></svg></a>
+          <a class="mono" href="builds/rollout-readiness/"><span>See all 13 rollout checks</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7M6.5 3l3 3-3 3"/></svg></a>
         </li>
         <li>
           <svg class="craft__ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 40h28M6 40V8"/><path d="M10 32l7-9 6 5 9-13"/><circle class="f" cx="34" cy="30" r="7"/><path d="M39 35l5 5"/></svg>
           <h3>Agent studies</h3>
           <p>Side-by-side runs that show where an agent breaks, what context it needs, and what each choice costs.</p>
-          <a class="pill pill--line" href="builds/agent-studies/">See all 5 agent studies<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7M6.5 3l3 3-3 3"/></svg></a>
+          <a class="mono" href="builds/agent-studies/"><span>See all 5 agent studies</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7M6.5 3l3 3-3 3"/></svg></a>
         </li>
       </ul>
     </div>
