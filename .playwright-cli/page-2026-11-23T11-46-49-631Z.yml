@@ -1,0 +1,192 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner:
+    - generic:
+      - link "Pranav Gudise" [ref=e3] [cursor=pointer]:
+        - /url: "#top"
+      - link "Message me on LinkedIn" [ref=e10] [cursor=pointer]:
+        - /url: https://www.linkedin.com/in/pranav-gudise/
+  - main [ref=e12]:
+    - region "Hello, I care about making sure AI agents go live tested and ready for real customers." [ref=e13]:
+      - generic [ref=e14]:
+        - heading [level=1] [ref=e15]:
+          - text: Hello, I care about making sure AI agents go live
+          - generic [ref=e16]:
+            - emphasis [ref=e18]: tested
+            - text: and
+            - emphasis [ref=e23]: ready
+          - text: for real customers.
+        - paragraph [ref=e26]: I've spent the last two years helping enterprise clients get AI systems live, most recently designing the rubrics that judge agent output at Surge.
+    - region "Selected builds" [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - heading "Selected builds" [level=2] [ref=e30]
+          - paragraph [ref=e31]: Each one is a small, working answer to one deployment problem. All use synthetic or public data.
+        - generic [ref=e32]:
+          - 'link "Booking eval results: the reference agent passes 25 of 25 cases; the naive agent passes 5 of 25 and fails the gate. Booking eval harness Live demo A 25-case eval and go-live gate for an agent that books field-service jobs." [ref=e33] [cursor=pointer]':
+            - /url: https://pg2342-hub.github.io/booking-eval-harness/
+            - 'img "Booking eval results: the reference agent passes 25 of 25 cases; the naive agent passes 5 of 25 and fails the gate." [ref=e36]'
+            - generic [ref=e37]:
+              - generic [ref=e38]:
+                - generic [ref=e39]: Booking eval harness
+                - generic [ref=e40]: Live demo
+              - generic [ref=e43]: A 25-case eval and go-live gate for an agent that books field-service jobs.
+          - 'link "Go-live readiness board: eight hospital units, six no-go, one go with fixes, one go. Go-live readiness check Live demo Unit-by-unit go or no-go for a hospital staffing rollout, with fixes grouped by owning team." [ref=e44] [cursor=pointer]':
+            - /url: https://pg2342-hub.github.io/golive-readiness-check/
+            - 'img "Go-live readiness board: eight hospital units, six no-go, one go with fixes, one go." [ref=e47]'
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - generic [ref=e50]: Go-live readiness check
+                - generic [ref=e51]: Live demo
+              - generic [ref=e54]: Unit-by-unit go or no-go for a hospital staffing rollout, with fixes grouped by owning team.
+          - 'link "Ticket routing chart: as the confidence threshold rises, the share routed automatically falls, accuracy rises, and the cost per 1,000 tickets dips then climbs. Ticket routing eval Live demo Picks the confidence bar for auto-routing support tickets, with the cost per 1,000 tickets." [ref=e55] [cursor=pointer]':
+            - /url: https://pg2342-hub.github.io/ticket-routing-eval/
+            - 'img "Ticket routing chart: as the confidence threshold rises, the share routed automatically falls, accuracy rises, and the cost per 1,000 tickets dips then climbs." [ref=e58]'
+            - generic [ref=e59]:
+              - generic [ref=e60]:
+                - generic [ref=e61]: Ticket routing eval
+                - generic [ref=e62]: Live demo
+              - generic [ref=e65]: Picks the confidence bar for auto-routing support tickets, with the cost per 1,000 tickets.
+          - 'link "Contract memory results: long context and the precomputed memory both answer 25 of 25, the memory with 7,073 context tokens a question against 69,221. Contract memory harness Live demo Four ways to give an agent memory over a contract bank, and what breaks after an amendment." [ref=e66] [cursor=pointer]':
+            - /url: https://pg2342-hub.github.io/contract-memory-harness/
+            - 'img "Contract memory results: long context and the precomputed memory both answer 25 of 25, the memory with 7,073 context tokens a question against 69,221." [ref=e69]'
+            - generic [ref=e70]:
+              - generic [ref=e71]:
+                - generic [ref=e72]: Contract memory harness
+                - generic [ref=e73]: Live demo
+              - generic [ref=e76]: Four ways to give an agent memory over a contract bank, and what breaks after an amendment.
+          - 'link "Tie-out report: LP accounts that tie and the five that break, each with its difference. Capital account tie-out Live demo Ties every LP capital account before a fund admin switch and names the likely cause of each break." [ref=e77] [cursor=pointer]':
+            - /url: https://pg2342-hub.github.io/capital-account-tieout/
+            - 'img "Tie-out report: LP accounts that tie and the five that break, each with its difference." [ref=e80]'
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - generic [ref=e83]: Capital account tie-out
+                - generic [ref=e84]: Live demo
+              - generic [ref=e87]: Ties every LP capital account before a fund admin switch and names the likely cause of each break.
+          - 'link "Invoice routing: 57 of 110 invoices auto-forward; 53 need accounts payable first. AP auto-forward gate Live demo Decides which jobs have earned AI invoice auto-forwarding, and which invoices AP still clears." [ref=e88] [cursor=pointer]':
+            - /url: https://pg2342-hub.github.io/ap-autoforward-gate/
+            - 'img "Invoice routing: 57 of 110 invoices auto-forward; 53 need accounts payable first." [ref=e91]'
+            - generic [ref=e92]:
+              - generic [ref=e93]:
+                - generic [ref=e94]: AP auto-forward gate
+                - generic [ref=e95]: Live demo
+              - generic [ref=e98]: Decides which jobs have earned AI invoice auto-forwarding, and which invoices AP still clears.
+    - region "The path so far" [ref=e99]:
+      - generic [ref=e100]:
+        - heading "The path so far" [level=2] [ref=e102]
+        - list [ref=e107]:
+          - listitem [ref=e108]:
+            - generic [ref=e109]: Surge Labs
+            - generic [ref=e110]: Product Operations Manager
+            - generic [ref=e111]: Apr to Sep 2026
+          - listitem [ref=e112]:
+            - generic [ref=e113]: Mercor
+            - generic [ref=e114]: Strategic Project Lead (contract)
+            - generic [ref=e115]: Mar to Apr 2026
+          - listitem [ref=e116]:
+            - generic [ref=e117]: Persona Identities
+            - generic [ref=e118]: Field Product Engineer
+            - generic [ref=e119]: Jan to Mar 2026
+          - listitem [ref=e120]:
+            - generic [ref=e121]: Capgemini Invent
+            - generic [ref=e122]: Associate Technical Consultant
+            - generic [ref=e123]: Feb to Dec 2025
+          - listitem [ref=e124]:
+            - generic [ref=e125]: NYU Stern
+            - generic [ref=e126]: B.S. in Business, Data Science
+            - generic [ref=e127]: Sep 2021 to Dec 2024
+    - region "More builds" [ref=e128]:
+      - generic [ref=e129]:
+        - heading "More builds" [level=2] [ref=e131]
+        - list [ref=e132]:
+          - listitem [ref=e133]:
+            - link "Appointment agent eval Switch off any check and see which cases catch it Demo" [ref=e134] [cursor=pointer]:
+              - /url: https://pg2342-hub.github.io/appointment-agent-eval/
+              - generic [ref=e135]: Appointment agent eval
+              - emphasis [ref=e136]: Switch off any check and see which cases catch it
+              - generic [ref=e137]: Demo
+          - listitem [ref=e138]:
+            - 'link "Voice agent bake-off Moves a voice screener to a new model: replay, 10%, then 50% Demo" [ref=e139] [cursor=pointer]':
+              - /url: https://pg2342-hub.github.io/voice-agent-bakeoff/
+              - generic [ref=e140]: Voice agent bake-off
+              - emphasis [ref=e141]: "Moves a voice screener to a new model: replay, 10%, then 50%"
+              - generic [ref=e142]: Demo
+          - listitem [ref=e143]:
+            - link "Home sale file pre-review Pre-reviews home sale files for compliance, with a 25-case eval Code" [ref=e144] [cursor=pointer]:
+              - /url: https://github.com/pg2342-hub/sim-texas-file-prereview
+              - generic [ref=e145]: Home sale file pre-review
+              - emphasis [ref=e146]: Pre-reviews home sale files for compliance, with a 25-case eval
+              - generic [ref=e147]: Code
+          - listitem [ref=e148]:
+            - 'link "Sales coach moment test 25 moments: does a live-call coach suggest the right next step? Code" [ref=e149] [cursor=pointer]':
+              - /url: https://github.com/pg2342-hub/othello-moment-test
+              - generic [ref=e150]: Sales coach moment test
+              - emphasis [ref=e151]: "25 moments: does a live-call coach suggest the right next step?"
+              - generic [ref=e152]: Code
+          - listitem [ref=e153]:
+            - link "Agent cold-start study Can a fresh coding agent set up an email inbox on its own? 8 runs Demo" [ref=e154] [cursor=pointer]:
+              - /url: https://pg2342-hub.github.io/agent-coldstart-study/
+              - generic [ref=e155]: Agent cold-start study
+              - emphasis [ref=e156]: Can a fresh coding agent set up an email inbox on its own? 8 runs
+              - generic [ref=e157]: Demo
+          - listitem [ref=e158]:
+            - link "Prompt to quote A rep's plain-English deal becomes a priced quote with its approvals Demo" [ref=e159] [cursor=pointer]:
+              - /url: https://pg2342-hub.github.io/prompt-to-quote/
+              - generic [ref=e160]: Prompt to quote
+              - emphasis [ref=e161]: A rep's plain-English deal becomes a priced quote with its approvals
+              - generic [ref=e162]: Demo
+          - listitem [ref=e163]:
+            - link "Text reorder agent Text “the usual,” confirm, pay; anything else goes to a person Demo" [ref=e164] [cursor=pointer]:
+              - /url: https://pg2342-hub.github.io/imessage-reorder-agent/
+              - generic [ref=e165]: Text reorder agent
+              - emphasis [ref=e166]: Text “the usual,” confirm, pay; anything else goes to a person
+              - generic [ref=e167]: Demo
+          - listitem [ref=e168]:
+            - link "Intake to PO agent A plain-language purchase request taken to a PO decision Code" [ref=e169] [cursor=pointer]:
+              - /url: https://github.com/pg2342-hub/intake-to-po-agent
+              - generic [ref=e170]: Intake to PO agent
+              - emphasis [ref=e171]: A plain-language purchase request taken to a PO decision
+              - generic [ref=e172]: Code
+          - listitem [ref=e173]:
+            - link "Carrier sourcing scorecard Scores a sourcing agent against what reps really booked Demo" [ref=e174] [cursor=pointer]:
+              - /url: https://pg2342-hub.github.io/carrier-sourcing-scorecard/
+              - generic [ref=e175]: Carrier sourcing scorecard
+              - emphasis [ref=e176]: Scores a sourcing agent against what reps really booked
+              - generic [ref=e177]: Demo
+          - listitem [ref=e178]:
+            - link "Carrier onboarding checks Checks carriers against public FMCSA data before entry Code" [ref=e179] [cursor=pointer]:
+              - /url: https://github.com/pg2342-hub/carrier-onboarding-checks
+              - generic [ref=e180]: Carrier onboarding checks
+              - emphasis [ref=e181]: Checks carriers against public FMCSA data before entry
+              - generic [ref=e182]: Code
+          - listitem [ref=e183]:
+            - link "Partner deliverable QA Holds a partner's discovery work to standard first Demo" [ref=e184] [cursor=pointer]:
+              - /url: https://pg2342-hub.github.io/partner-deliverable-qa/
+              - generic [ref=e185]: Partner deliverable QA
+              - emphasis [ref=e186]: Holds a partner's discovery work to standard first
+              - generic [ref=e187]: Demo
+          - listitem [ref=e188]:
+            - link "Contract obligation tracker Pulls notice dates; a person verifies each field Demo" [ref=e189] [cursor=pointer]:
+              - /url: https://pg2342-hub.github.io/contract-obligation-tracker/
+              - generic [ref=e190]: Contract obligation tracker
+              - emphasis [ref=e191]: Pulls notice dates; a person verifies each field
+              - generic [ref=e192]: Demo
+          - listitem [ref=e193]:
+            - link "API integration checker Finds common integration gaps from the command line Demo" [ref=e194] [cursor=pointer]:
+              - /url: https://pg2342-hub.github.io/odyssey-doctor/
+              - generic [ref=e195]: API integration checker
+              - emphasis [ref=e196]: Finds common integration gaps from the command line
+              - generic [ref=e197]: Demo
+    - region "Hiring for AI deployment or agent work? I’d like to hear about it." [ref=e198]:
+      - generic [ref=e199]:
+        - heading "Hiring for AI deployment or agent work? I’d like to hear about it." [level=2] [ref=e200]
+        - generic [ref=e201]:
+          - link "Message me on LinkedIn" [ref=e202] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/pranav-gudise/
+          - link "See the code on GitHub" [ref=e203] [cursor=pointer]:
+            - /url: https://github.com/pg2342-hub
+        - generic [ref=e204]:
+          - generic [ref=e205]: © 2026 Pranav Gudise
+          - link "Back to top" [ref=e206] [cursor=pointer]:
+            - /url: "#top"

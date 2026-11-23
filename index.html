@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pranav Gudise: evals and go-live checks for AI agents</title>
+<meta name="description" content="Nineteen small working builds for taking AI agents live with customers, most with a demo page that needs no install.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pranav Gudise: evals and go-live checks for AI agents">
+<meta property="og:description" content="Nineteen small working builds for taking AI agents live with customers.">
+<meta property="og:image" content="https://pg2342-hub.github.io/share.jpg">
+<meta property="og:url" content="https://pg2342-hub.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f4f2ec">
+<link rel="preload" href="fonts/libre-caslon-display-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+/* General Sans, ITF Free Font License (fontshare.com): official files, unmodified, self-hosted */
+@font-face { font-family: "General Sans"; src: url("fonts/general-sans-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "General Sans"; src: url("fonts/general-sans-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "General Sans"; src: url("fonts/general-sans-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+</style>
+<style>
+:root {
+  --paper: #f4f2ec;
+  --sheet: #fcfbf7;
+  --ink: #1b1a17;
+  --ink-2: #57544c;
+  --rule: rgb(27 26 23 / .14);
+  --green: #24513c;
+  --green-deep: #1b3f2e;
+  --green-wash: #dce6dc;
+  --tint-1: #dfe7dc;
+  --tint-2: #e8eadc;
+  --tint-3: #d6e1d8;
+  --serif: "Libre Caslon Display", Georgia, serif;
+  --sans: "General Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Red Hat Mono", ui-monospace, Menlo, monospace;
+  --wrap: min(1248px, calc(100% - 64px));
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--sans); text-rendering: optimizeLegibility; }
+::selection { background: var(--green-wash); color: var(--ink); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 6px; }
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; }
+p { margin: 0; }
+.wrap { width: var(--wrap); margin-inline: auto; }
+section[id] { scroll-margin-top: 110px; }
+.mono { font-family: var(--mono); font-size: 13px; letter-spacing: .02em; }
+.skip { position: absolute; left: 12px; top: -64px; z-index: 30; background: var(--ink); color: var(--paper); padding: 10px 14px; border-radius: 8px; text-decoration: none; }
+.skip:focus { top: 12px; }
+
+/* floating header: a mark and one pill */
+.top { position: fixed; inset: 0 0 auto 0; z-index: 20; pointer-events: none; }
+/* a soft blur band under the header, so text scrolling beneath it stays out of the way */
+.top::before { content: ""; position: absolute; inset: 0 0 -12px 0; z-index: -1; background: linear-gradient(rgb(244 242 236 / .6), rgb(244 242 236 / .32) 60%, rgb(244 242 236 / 0)); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); -webkit-mask-image: linear-gradient(#000 55%, transparent); mask-image: linear-gradient(#000 55%, transparent); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; padding: 28px 0; }
+.top a { pointer-events: auto; }
+.brand { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.mark { width: 36px; height: 36px; overflow: visible; }
+.mark circle, .mark path { fill: none; stroke: var(--green); stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
+.mark .mark__fill { fill: var(--green-wash); }
+.mark .mark__pin { fill: var(--green); stroke-width: 0; }
+.mark__needle { transform-origin: 12px 12px; transform: rotate(0deg); transition: transform .9s cubic-bezier(.34, 1.56, .64, 1); }
+.brand:hover .mark__needle, .brand:focus-visible .mark__needle { transform: rotate(-45deg); }
+@media (prefers-reduced-motion: reduce) { .mark__needle { transition: none; } }
+.brand__name { font: 400 22px/1 var(--serif); }
+.pill { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: var(--green); color: #fff; font: 500 16px/1 var(--sans); text-decoration: none; transition: background-color .2s, transform .25s var(--ease); }
+.pill:hover { background: var(--green-deep); }
+.pill:active { transform: translateY(1px); }
+.pill__short { display: none; }
+@media (max-width: 420px) { .pill__long { display: none; } .pill__short { display: inline; } }
+.pill--line { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
+.pill--line:hover { background: transparent; border-color: var(--ink); }
+
+/* sprig line art (logo and section mark) */
+.sprig path { fill: none; stroke: var(--green); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.sprig__leaf > path:first-child { fill: var(--green-wash); }
+.sprig__vein { opacity: .6; }
+
+/* hero: one sentence, left-aligned */
+.hero { padding: 200px 0 72px; }
+.hero h1 { font-size: clamp(36px, 4.2vw, 58px); line-height: 1.16; letter-spacing: -.01em; max-width: 21em; text-wrap: balance; }
+.hero h1 em { font-style: italic; }
+.nb { white-space: nowrap; }
+.hl { white-space: nowrap; color: var(--green); background: var(--green-wash); padding: 0 .12em; margin: 0 -.04em; border-radius: 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.ico { display: inline-block; width: .7em; height: .7em; margin: 0 -.06em 0 .2em; vertical-align: .02em; overflow: visible; }
+.ico circle, .ico path { fill: none; stroke: var(--ink); stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
+.ico .ico__fill { fill: var(--green-wash); stroke: var(--green); }
+.hero__lead { margin-top: 36px; max-width: 34em; font-size: 18px; color: var(--ink-2); }
+
+/* section labels: an outlined pill, like a tab on a folder */
+.label { display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border: 1px solid var(--ink); border-radius: 999px; font: 400 22px/1 var(--serif); }
+.section { padding: 40px 0 120px; }
+.section__top { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
+.section__top p { color: var(--ink-2); max-width: 30em; font-size: 16px; }
+
+/* work: big rounded tiles, narrow and wide in turn */
+.tiles { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 56px 24px; }
+.tile { display: block; text-decoration: none; }
+.tile--n { grid-column: span 5; }
+.tile--w { grid-column: span 7; }
+.tile__frame { position: relative; display: block; height: clamp(360px, 35vw, 506px); border-radius: 24px; overflow: hidden; }
+.tint-1 .tile__frame { background: var(--tint-1); }
+.tint-2 .tile__frame { background: var(--tint-2); }
+.tint-3 .tile__frame { background: var(--tint-3); }
+.tile__shot { position: absolute; left: 7%; width: min(98%, 720px); top: 40px; display: block; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 1px 0 rgb(27 26 23 / .06), 0 30px 60px -30px rgb(27 26 23 / .45); transition: transform .7s var(--ease); }
+@media (hover: hover) { .tile:hover .tile__shot { transform: translateY(-8px); } }
+.tile__cap { display: grid; gap: 4px; margin-top: 18px; }
+.tile__row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.tag { display: inline-flex; align-items: center; gap: 4px; color: var(--green); white-space: nowrap; }
+.tag svg { width: 11px; height: 11px; }
+.tag path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.tile__cap b { font-weight: 500; font-size: 18px; }
+.tile__cap > span:last-child { color: var(--ink-2); font-size: 15px; line-height: 1.5; max-width: 36em; text-wrap: pretty; }
+@media (hover: hover) { .tile:hover .tile__cap b { text-decoration: underline; text-decoration-color: var(--green); text-underline-offset: 4px; } }
+
+/* experience */
+.trail { width: 170px; height: 68px; overflow: visible; }
+.xp__top { justify-content: flex-start; gap: 28px; }
+.trail path, .trail circle { fill: none; stroke: var(--green); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.trail__line { stroke-dasharray: 2 7; transition: stroke-dashoffset 2.4s linear; }
+.xp__top:hover .trail__line { stroke-dashoffset: -60; }
+.trail__start { fill: var(--green) !important; stroke: none !important; }
+.trail__flag { fill: var(--green-wash) !important; }
+@media (prefers-reduced-motion: reduce) { .trail__line { transition: none; } .xp__top:hover .trail__line { stroke-dashoffset: 0; } }
+.roles { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.roles li { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 5fr) minmax(0, 2fr); gap: 24px; align-items: baseline; padding: 24px 0; border-bottom: 1px solid var(--rule); font-size: 18px; }
+.roles li span:nth-child(2) { color: var(--ink-2); }
+.roles__org { font-weight: 500; }
+.roles li span:last-child { text-align: right; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+/* more builds */
+.more { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; }
+.more a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); text-decoration: none; min-height: 44px; }
+.more b { font-weight: 500; }
+.more em { grid-column: 1; font-style: normal; font-size: 15px; color: var(--ink-2); text-wrap: pretty; }
+.more .mono { grid-column: 2; grid-row: 1; align-self: center; color: var(--ink-2); }
+@media (hover: hover) { .more a:hover b { text-decoration: underline; text-decoration-color: var(--green); text-underline-offset: 4px; } }
+@media (hover: hover) { .more a:hover .mono { color: var(--green); } }
+
+/* close */
+.close { padding: 80px 0 40px; }
+.close h2 { font-size: clamp(36px, 4.4vw, 60px); line-height: 1.1; letter-spacing: -.01em; max-width: 16em; }
+.close__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+.foot { display: flex; justify-content: space-between; gap: 16px; margin-top: 120px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--ink-2); }
+
+@media (max-width: 1000px) {
+  .tiles { grid-template-columns: minmax(0, 1fr); }
+  .tile--n, .tile--w { grid-column: auto; }
+  .tile__frame { height: auto; aspect-ratio: 16 / 11; }
+  .more { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+  :root { --wrap: calc(100% - 40px); }
+  body { font-size: 16px; }
+  .top .wrap { padding: 18px 0; }
+  .top .pill { font-size: 15px; padding: 0 18px; }
+  .mark { width: 30px; height: 30px; }
+  .brand__name { font-size: 19px; }
+  .hero { padding: 132px 0 80px; }
+  .hero__lead { font-size: 17px; margin-top: 24px; }
+  .section { padding: 24px 0 88px; }
+  .section__top { flex-direction: column; align-items: flex-start; }
+  .tile__frame { height: auto; aspect-ratio: 4 / 3; border-radius: 18px; }
+  .tile__shot { left: 6%; width: 120%; top: 24px; }
+  .tiles { gap: 40px 0; }
+      .trail { width: 130px; height: 52px; }
+  .xp__top { flex-direction: row; align-items: center; }
+  .roles li { grid-template-columns: minmax(0, 1fr) auto; row-gap: 2px; font-size: 16px; }
+  .roles li span:nth-child(2) { grid-column: 1 / -1; grid-row: 2; color: var(--ink-2); }
+  .roles li span:last-child { grid-column: 2; grid-row: 1; }
+  .close__actions .pill { flex: 1 1 100%; justify-content: center; }
+  .foot { flex-direction: column; margin-top: 80px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><g class="mark__needle"><path class="mark__fill" d="M15.5 8.5 L 13.4 13.4 L 8.5 15.5 L 10.6 10.6 Z"/></g><circle class="mark__pin" cx="12" cy="12" r=".7"/></svg><span class="brand__name">Pranav Gudise</span></a>
+    <a class="pill" href="https://www.linkedin.com/in/pranav-gudise/"><span class="pill__long">Message me on LinkedIn</span><span class="pill__short">LinkedIn</span></a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-h">
+    <div class="wrap">
+      <h1 id="hero-h">Hello, I care about making sure AI agents <span class="nb">go live</span> <span class="hl"><span class="nb"><em>tested</em><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.4 10.6 15.4 16.6 8.8"/></svg></span> and <span class="nb"><em>ready</em><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21.5 V 3"/><path class="ico__fill" d="M6 4 C 9 2.6, 11.5 5.6, 14.5 4.2 C 16.3 3.4, 17.6 3.5, 19 4 V 12.2 C 17.6 11.7, 16.3 11.6, 14.5 12.4 C 11.5 13.8, 9 10.8, 6 12.2 Z"/></svg></span></span> for real customers.</h1>
+      <p class="hero__lead">I've spent the last two years helping enterprise clients get AI systems live, most recently designing the rubrics that judge agent output at Surge.</p>
+    </div>
+  </section>
+
+  <section class="section" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="section__top">
+        <h2 class="label" id="work-h">Selected builds</h2>
+        <p>Each one is a small, working answer to one deployment problem. All use synthetic or public data.</p>
+      </div>
+      <div class="tiles">
+        <a class="tile tile--n tint-1" href="https://pg2342-hub.github.io/booking-eval-harness/">
+          <span class="tile__frame"><span class="tile__shot"><img src="work/booking-eval-harness.jpg" width="720" height="490" alt="Booking eval results: the reference agent passes 25 of 25 cases; the naive agent passes 5 of 25 and fails the gate." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>Booking eval harness</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>A 25-case eval and go-live gate for an agent that books field-service jobs.</span></span>
+        </a>
+        <a class="tile tile--w tint-2" href="https://pg2342-hub.github.io/golive-readiness-check/">
+          <span class="tile__frame"><span class="tile__shot"><img src="work/golive-readiness-check.jpg" width="720" height="640" alt="Go-live readiness board: eight hospital units, six no-go, one go with fixes, one go." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>Go-live readiness check</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Unit-by-unit go or no-go for a hospital staffing rollout, with fixes grouped by owning team.</span></span>
+        </a>
+        <a class="tile tile--w tint-3" href="https://pg2342-hub.github.io/ticket-routing-eval/">
+          <span class="tile__frame"><span class="tile__shot"><img src="work/ticket-routing-eval.jpg" width="720" height="456" alt="Ticket routing chart: as the confidence threshold rises, the share routed automatically falls, accuracy rises, and the cost per 1,000 tickets dips then climbs." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>Ticket routing eval</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Picks the confidence bar for auto-routing support tickets, with the cost per 1,000 tickets.</span></span>
+        </a>
+        <a class="tile tile--n tint-1" href="https://pg2342-hub.github.io/contract-memory-harness/">
+          <span class="tile__frame"><span class="tile__shot"><img style="max-width:480px" src="work/contract-memory-harness.jpg" width="480" height="640" alt="Contract memory results: long context and the precomputed memory both answer 25 of 25, the memory with 7,073 context tokens a question against 69,221." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>Contract memory harness</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Four ways to give an agent memory over a contract bank, and what breaks after an amendment.</span></span>
+        </a>
+        <a class="tile tile--n tint-2" href="https://pg2342-hub.github.io/capital-account-tieout/">
+          <span class="tile__frame"><span class="tile__shot"><img style="max-width:520px" src="work/capital-account-tieout.jpg" width="520" height="640" alt="Tie-out report: LP accounts that tie and the five that break, each with its difference." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>Capital account tie-out</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Ties every LP capital account before a fund admin switch and names the likely cause of each break.</span></span>
+        </a>
+        <a class="tile tile--w tint-3" href="https://pg2342-hub.github.io/ap-autoforward-gate/">
+          <span class="tile__frame"><span class="tile__shot"><img src="work/ap-autoforward-gate.jpg" width="720" height="640" alt="Invoice routing: 57 of 110 invoices auto-forward; 53 need accounts payable first." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>AP auto-forward gate</b><span class="tag mono">Live demo <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Decides which jobs have earned AI invoice auto-forwarding, and which invoices AP still clears.</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="xp-h">
+    <div class="wrap">
+      <div class="section__top xp__top">
+        <h2 class="label" id="xp-h">The path so far</h2>
+        <svg class="trail" viewBox="0 0 200 80" aria-hidden="true"><circle class="trail__start" cx="6" cy="72" r="3.2"/><path class="trail__line" d="M10 70 C 40 66, 52 44, 82 50 C 112 56, 116 74, 146 64 C 166 57, 168 40, 176 28"/><path class="trail__pole" d="M178 30 V 4"/><path class="trail__flag" d="M178 5 C 183 3, 187 7, 192 5.5 C 194 4.8, 196 4.9, 197 5.2 V 14 C 195.6 13.6, 194 13.6, 192 14.4 C 187 16.4, 183 12, 178 14 Z"/></svg>
+      </div>
+      <ul class="roles">
+        <li><span class="roles__org">Surge Labs</span><span>Product Operations Manager</span><span class="mono">Apr to Sep 2026</span></li>
+        <li><span class="roles__org">Mercor</span><span>Strategic Project Lead (contract)</span><span class="mono">Mar to Apr 2026</span></li>
+        <li><span class="roles__org">Persona Identities</span><span>Field Product Engineer</span><span class="mono">Jan to Mar 2026</span></li>
+        <li><span class="roles__org">Capgemini Invent</span><span>Associate Technical Consultant</span><span class="mono">Feb to Dec 2025</span></li>
+        <li><span class="roles__org">NYU Stern</span><span>B.S. in Business, Data Science</span><span class="mono">Sep 2021 to Dec 2024</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="more" aria-labelledby="more-h">
+    <div class="wrap">
+      <div class="section__top"><h2 class="label" id="more-h">More builds</h2></div>
+      <ul class="more">
+          <li><a href="https://pg2342-hub.github.io/appointment-agent-eval/"><b>Appointment agent eval</b><em>Switch off any check and see which cases catch it</em><span class="mono">Demo</span></a></li>
+          <li><a href="https://pg2342-hub.github.io/voice-agent-bakeoff/"><b>Voice agent bake-off</b><em>Moves a voice screener to a new model: replay, 10%, then 50%</em><span class="mono">Demo</span></a></li>
+          <li><a href="https://github.com/pg2342-hub/sim-texas-file-prereview"><b>Home sale file pre-review</b><em>Pre-reviews home sale files for compliance, with a 25-case eval</em><span class="mono">Code</span></a></li>
+          <li><a href="https://github.com/pg2342-hub/othello-moment-test"><b>Sales coach moment test</b><em>25 moments: does a live-call coach suggest the right next step?</em><span class="mono">Code</span></a></li>
+          <li><a href="https://pg2342-hub.github.io/agent-coldstart-study/"><b>Agent cold-start study</b><em>Can a fresh coding agent set up an email inbox on its own? 8 runs</em><span class="mono">Demo</span></a></li>
+          <li><a href="https://pg2342-hub.github.io/prompt-to-quote/"><b>Prompt to quote</b><em>A rep's plain-English deal becomes a priced quote with its approvals</em><span class="mono">Demo</span></a></li>
+          <li><a href="https://pg2342-hub.github.io/imessage-reorder-agent/"><b>Text reorder agent</b><em>Text “the usual,” confirm, pay; anything else goes to a person</em><span class="mono">Demo</span></a></li>
+          <li><a href="https://github.com/pg2342-hub/intake-to-po-agent"><b>Intake to PO agent</b><em>A plain-language purchase request taken to a PO decision</em><span class="mono">Code</span></a></li>
+          <li><a href="https://pg2342-hub.github.io/carrier-sourcing-scorecard/"><b>Carrier sourcing scorecard</b><em>Scores a sourcing agent against what reps really booked</em><span class="mono">Demo</span></a></li>
+          <li><a href="https://github.com/pg2342-hub/carrier-onboarding-checks"><b>Carrier onboarding checks</b><em>Checks carriers against public FMCSA data before entry</em><span class="mono">Code</span></a></li>
+          <li><a href="https://pg2342-hub.github.io/partner-deliverable-qa/"><b>Partner deliverable QA</b><em>Holds a partner's discovery work to standard first</em><span class="mono">Demo</span></a></li>
+          <li><a href="https://pg2342-hub.github.io/contract-obligation-tracker/"><b>Contract obligation tracker</b><em>Pulls notice dates; a person verifies each field</em><span class="mono">Demo</span></a></li>
+          <li><a href="https://pg2342-hub.github.io/odyssey-doctor/"><b>API integration checker</b><em>Finds common integration gaps from the command line</em><span class="mono">Demo</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="close" id="contact" aria-labelledby="close-h">
+    <div class="wrap">
+      <h2 id="close-h">Hiring for AI deployment or agent work? I&rsquo;d like to hear about it.</h2>
+      <div class="close__actions">
+        <a class="pill" href="https://www.linkedin.com/in/pranav-gudise/">Message me on LinkedIn</a>
+        <a class="pill pill--line" href="https://github.com/pg2342-hub">See the code on GitHub</a>
+      </div>
+      <div class="foot mono"><span>&copy; 2026 Pranav Gudise</span><a href="#top">Back to top</a></div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
