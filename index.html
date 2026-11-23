@@ -69,8 +69,6 @@ section[id] { scroll-margin-top: 110px; }
 .section.craft, .section.band { padding: 0; background: none; border-top: 0; }
 .section.craft::before, .section.craft::after, .section.band::before, .section.band::after { display: none; }
 .craft__head { padding: clamp(96px, 12vw, 160px) 0 clamp(40px, 4vw, 56px); }
-.craft__head .trail { display: block; margin: 20px auto 0; }
-.craft__head:hover .trail__line { stroke-dashoffset: -60; }
 .band__body { margin: 0 -24px; padding: 0 24px; background: var(--paper); border-top: 1px solid var(--rule); }
 .band__body .roles { border-top: 0; }
 .band__body .roles li:last-child { border-bottom: 0; }
@@ -128,6 +126,7 @@ section[id] { scroll-margin-top: 110px; }
 /* section labels: an outlined pill, like a tab on a folder */
 .label { display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border: 1px solid var(--ink); border-radius: 999px; font: 400 22px/1 var(--serif); }
 .section { padding: 40px 0 120px; }
+#work { padding-bottom: 72px; }
 .section__top { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
 .section__top p { color: var(--ink-2); max-width: 30em; font-size: 16px; }
 
@@ -285,7 +284,7 @@ section[id] { scroll-margin-top: 110px; }
 
   <section class="section band" id="about" aria-labelledby="xp-h">
     <div class="wrap">
-      <div class="craft__head"><h2 class="craft__line" id="xp-h">The path <em>so far</em></h2><svg class="trail" viewBox="0 0 200 80" aria-hidden="true"><circle class="trail__start" cx="6" cy="72" r="3.2"/><path class="trail__line" d="M10 70 C 40 66, 52 44, 82 50 C 112 56, 116 74, 146 64 C 166 57, 168 40, 176 28"/><path class="trail__pole" d="M178 30 V 4"/><path class="trail__flag" d="M178 5 C 183 3, 187 7, 192 5.5 C 194 4.8, 196 4.9, 197 5.2 V 14 C 195.6 13.6, 194 13.6, 192 14.4 C 187 16.4, 183 12, 178 14 Z"/></svg></div>
+      <div class="craft__head"><h2 class="craft__line" id="xp-h">The path <em>so far</em></h2></div>
       <div class="band__body">
       <ul class="roles">
         <li><span class="roles__org">Surge Labs</span><span>Product Operations Manager</span><span class="mono">Apr to Sep 2026</span></li>
