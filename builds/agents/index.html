@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agents and tools: builds by Pranav Gudise</title>
+<meta name="description" content="5 working agents and tools by Pranav Gudise, most with a demo page that needs no install.">
+<link rel="canonical" href="https://pranavgudise.dev/builds/agents/">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#ffffff">
+<!-- fonts -->
+<link rel="preload" href="../../fonts/libre-caslon-display-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../fonts/fonts.css">
+<style>
+/* General Sans, ITF Free Font License (fontshare.com): official files, unmodified, self-hosted */
+@font-face { font-family: "General Sans"; src: url("../../fonts/general-sans-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "General Sans"; src: url("../../fonts/general-sans-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "General Sans"; src: url("../../fonts/general-sans-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+</style>
+
+<link rel="stylesheet" href="../builds.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><g class="mark__needle"><path class="mark__fill" d="M15.5 8.5 L 13.4 13.4 L 8.5 15.5 L 10.6 10.6 Z"/></g><circle class="mark__pin" cx="12" cy="12" r=".7"/></svg><span class="brand__name">Pranav Gudise</span></a>
+    <a class="pill" href="https://www.linkedin.com/in/pranav-gudise/"><span class="pill__long">Message me on LinkedIn</span><span class="pill__short">LinkedIn</span></a>
+  </div>
+</header>
+<main id="main">
+  <section class="hero bhero" id="top" aria-labelledby="page-h">
+    <div class="wrap">
+      <a class="bhero__back mono" href="/#approach"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M9.5 6h-7M5.5 3l-3 3 3 3"/></svg>All four kinds of work</a>
+      <h1 id="page-h">Agents and tools</h1>
+      <p class="bhero__lead">Working agents and tools, shown doing the job: what each handles on its own, and what it hands to a person.</p>
+      <p class="bhero__count mono">5 builds &middot; synthetic or public data</p>
+    </div>
+  </section>
+
+  <section class="section" id="featured" aria-labelledby="feat-h">
+    <div class="wrap">
+      <div class="section__top"><h2 class="label" id="feat-h">Featured</h2></div>
+      <div class="ltiles">
+        <a class="tile tile--l" data-repo="Visual-Context-Extractor" href="https://context-extractor.replit.app/">
+          <span class="tile__frame"><span class="tile__shot"><img data-thumb="manual" src="../../work/visual-context-extractor.jpg?v=20261124" width="720" height="498" alt="Visual Context Extractor analyzing two sample screenshots with the System design lens: numbered marks sit on the parts of each image that findings cite, and a column of proposed findings waits to be confirmed or dismissed." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>Visual Context Extractor</b><span class="tag mono">Live app <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>Turns client screenshots and system diagrams into source-cited findings, each pinned to the spot it came from, for a consultant to confirm or dismiss.</span></span>
+        </a>
+        <a class="tile tile--l" data-repo="freight-appointment-agent" href="https://freight-appointment-agent.pg2342.workers.dev/">
+          <span class="tile__frame"><span class="tile__shot"><img data-thumb="manual" src="../../work/freight-appointment-agent.jpg?v=20261124c" width="720" height="640" alt="The desk console's inbox in dark mode, open on a thread where the facility's portal fails twice and Claude books by email instead: the thread list, the email and Claude's reply, each step it took, and three graded runs that all pass." loading="lazy"></span></span>
+          <span class="tile__cap"><span class="tile__row"><b>Freight appointment agent</b><span class="tag mono">Live app <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span></span><span>An email agent that books freight dock appointments, live on Cloudflare: a desk console for every thread and hand-off, a go-live gate in CI, and a staged rollout.</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="all" aria-labelledby="all-h">
+    <div class="wrap">
+      <div class="section__top"><h2 class="label" id="all-h">All agents and tools</h2></div>
+      <ul class="more blist" aria-labelledby="all-h">
+          <li data-repo="prompt-to-quote"><a href="https://pg2342-hub.github.io/prompt-to-quote/"><b>Prompt to quote</b><em>A rep's plain-English deal becomes a priced quote with its approvals</em><span class="mono">Demo</span></a></li>
+          <li data-repo="imessage-reorder-agent"><a href="https://pg2342-hub.github.io/imessage-reorder-agent/"><b>Text reorder agent</b><em>Text “the usual,” confirm, pay; anything else goes to a person</em><span class="mono">Demo</span></a></li>
+          <li data-repo="intake-to-po-agent"><a href="https://github.com/pg2342-hub/intake-to-po-agent"><b>Intake to PO agent</b><em>A plain-language purchase request taken to a PO decision</em><span class="mono">Code</span></a></li>
+        </ul>
+    </div>
+  </section>
+
+  <section class="section" id="other" aria-labelledby="other-h">
+    <div class="wrap">
+      <div class="section__top"><h2 class="label" id="other-h">Other kinds of work</h2></div>
+      <ul class="bnav">
+        <li><a href="../evals/"><b>Evals</b><span>9 builds</span></a></li>
+        <li><a href="../go-live-gates/"><b>Go-live gates</b><span>3 builds</span></a></li>
+        <li><a href="../rollout-readiness/"><b>Rollout readiness</b><span>13 builds</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="close" id="contact" aria-labelledby="close-h">
+    <div class="wrap">
+      <hr class="close__rule">
+      <h2 id="close-h">Every go-live should be <em>earned</em></h2>
+      <div class="foot"><a href="https://www.linkedin.com/in/pranav-gudise/">LinkedIn</a><a href="https://github.com/pg2342-hub">GitHub</a><a href="#top">Back to top</a><span>&copy; 2026 Pranav Gudise</span></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
