@@ -78,7 +78,15 @@
     const base = idx.dataset.base || "";
     const hoverOnly = idx.dataset.reveal === "hover";
     let view = idx.dataset.view || "selected";
-    const items = (v) => v === "selected" ? selected.map((r) => by[r]) : builds.filter((b) => b.cat === v);
+    const PER_KIND = 6;
+    const kindAll = (v) => builds.filter((b) => b.cat === v);
+    const items = (v) => {
+      if (v === "selected") return selected.map((r) => by[r]);
+      const picked = (window.BUILDS.picks || {})[v];
+      if (picked && picked.length) return picked.map((r) => by[r]).filter(Boolean);
+      const all = kindAll(v);
+      return [...all.filter((b) => b.featured), ...all.filter((b) => !b.featured && !b.code)].slice(0, PER_KIND);
+    };
     const show = (b) => {
       if (!b) return;
       card.classList.add("on");
@@ -109,7 +117,9 @@
       } else {
         const [label, href] = PAGES[view];
         const d = idx.querySelector(`.seg button[data-v="${view}"]`);
-        more.innerHTML = `${d && d.dataset.about ? esc(d.dataset.about) + " " : ""}<a href="${base}${href}">Open the ${label} page</a> for a line on each.`;
+        const n = kindAll(view).length;
+        const shown = n > bs.length ? `${bs.length} of ${n} ${label} here. <a href="${base}${href}">See all ${n} on the ${label} page</a>, with a line on each.` : `<a href="${base}${href}">Open the ${label} page</a> for a line on each.`;
+        more.innerHTML = `${d && d.dataset.about ? esc(d.dataset.about) + " " : ""}${shown}`;
       }
       if (!hoverOnly) show(bs[0]); else { card.classList.remove("on"); delete card.dataset.repo; }
     };
