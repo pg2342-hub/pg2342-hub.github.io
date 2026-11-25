@@ -6,6 +6,7 @@ work/index.json and are edited by hand or by the daily routine:
   selected  the repos shown on the homepage, in order (Pranav chooses these)
   picks     optional, per kind: the repos the Work page shows for that kind, in order. Without it the
             Work page shows up to 6 per kind: featured builds first, then page order, skipping code-only
+  manual_previews  repos whose work/index/<repo>.jpg Pranav chose by hand; never recapture these
   results   one short measured result per repo, written from its demo page ("GO, 25 of 25 calls")
 Each build's preview image is work/index/<repo>.jpg (800x500); a build without one shows text only.
 

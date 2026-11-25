@@ -47,5 +47,9 @@
   "prompt-to-quote": "Priced from a public price book, in the browser",
   "imessage-reorder-agent": "28 of 28 conversations pass, 0 critical",
   "intake-to-po-agent": "Code only"
- }
+ },
+ "manual_previews": [
+  "freight-appointment-agent",
+  "Visual-Context-Extractor"
+ ]
 }

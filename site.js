@@ -275,3 +275,36 @@
     setTimeout(() => { location.href = url.href; }, 470);
   });
 })();
+
+// commits: the About wall and the homepage grid redraw from live counts when the Worker has them
+(() => {
+  const wall = document.querySelector(".ab2__wall .wall");
+  const mini = document.querySelector(".wall--mini");
+  if (!wall && !mini) return;
+  const ORDER = ["agents", "evals", "go-live-gates", "rollout-readiness", "other"];
+  const kindOf = {};
+  (window.BUILDS ? window.BUILDS.builds : []).forEach((b) => { kindOf[b.repo] = b.cat; });
+  const names = {};
+  (window.BUILDS ? window.BUILDS.builds : []).forEach((b) => { names[b.repo] = b.name; });
+  fetch("https://pranavgudise-live.pg2342.workers.dev/commits").then((r) => r.ok ? r.json() : null).then((d) => {
+    if (!d || !d.repos || !d.total) return;
+    const by = Object.fromEntries(ORDER.map((k) => [k, []]));
+    d.repos.forEach((r) => by[kindOf[r.name] || "other"].push(r));
+    const sums = Object.fromEntries(ORDER.map((k) => [k, by[k].reduce((s, r) => s + r.commits, 0)]));
+    document.querySelectorAll('[data-commits="total"]').forEach((el) => { el.textContent = d.total; });
+    document.querySelectorAll('[data-commits="repos"]').forEach((el) => { el.textContent = d.repos.length; });
+    document.querySelectorAll("[data-commits-kind]").forEach((el) => { el.textContent = sums[el.dataset.commitsKind]; });
+    if (wall) {
+      wall.innerHTML = ORDER.map((k) => by[k].sort((a, b) => b.commits - a.commits).map((r) =>
+        `<i data-k="${k}" title="${(names[r.name] || r.name).replace(/"/g, "&quot;")}"></i>`.repeat(r.commits)).join("")).join("");
+      wall.setAttribute("aria-label", `${d.total} commits: ` + ORDER.map((k) => `${k} ${sums[k]}`).join(", ") + ".");
+    }
+    if (mini) {
+      // 108 squares, each about total/108 commits, in proportion to the kinds
+      const cells = 108, seq = [];
+      ORDER.forEach((k) => { for (let i = 0; i < Math.round((sums[k] / d.total) * cells); i++) seq.push(k); });
+      while (seq.length < cells) seq.push("other");
+      mini.innerHTML = seq.slice(0, cells).map((k) => `<i data-k="${k}"></i>`).join("");
+    }
+  }).catch(() => {});
+})();
