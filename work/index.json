@@ -33,7 +33,7 @@
   "ap-autoforward-gate": "5 of 8 jobs earned auto-forward",
   "interview-stall-monitor": "14 threads need a person",
   "carrier-sourcing-scorecard": "NO-GO: coverage under the 60% target",
-  "carrier-onboarding-checks": "Code only",
+  "carrier-onboarding-checks": "GO, 10 of 10 correct, 0 wrong calls",
   "partner-deliverable-qa": "Send back: 9 problems to fix",
   "contract-obligation-tracker": "Every obligation dated, with its source clause",
   "odyssey-doctor": "12 of 17 public projects leak the API key",
@@ -46,7 +46,14 @@
   "page-change-agent": "GO, 30 of 30, 0 critical",
   "prompt-to-quote": "Priced from a public price book, in the browser",
   "imessage-reorder-agent": "28 of 28 conversations pass, 0 critical",
-  "intake-to-po-agent": "Code only"
+  "intake-to-po-agent": "Code only",
+  "service-desk-gap-finder": "3 of 13 topics can answer on their own",
+  "evidence-tracer": "17 supported, 9 cite fixes, 12 sentence fixes",
+  "prebill-chart-check": "GO, 29 of 30 visits, zero critical",
+  "routing-account-review": "HOLD, 8 of 10 engineers passing, $76.56 saved",
+  "restaurant-onboarding-monitor": "NO-GO, 9 of 10 locations at first pull",
+  "practice-golive-kit": "NO-GO, 5 of 5 offices, 21 findings",
+  "variance-commentary-gate": "GO, 25 of 25 closes, no critical errors"
  },
  "manual_previews": [
   "freight-appointment-agent",
